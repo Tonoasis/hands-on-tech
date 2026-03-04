@@ -1,0 +1,12 @@
+                                                                        Programs “Not Responding”
+
+
+
+When a program becomes unresponsive, it may display Not Responding in the title bar, indicating it is not processing user input. Task Manager can be used to troubleshoot this issue. The unresponsive program 
+should be located under the Processes tab, and an attempt can be made to close it using the End task option. If the program remains unresponsive, all related processes should be terminated to ensure a complete shutdown.
+
+Some applications, such as the Opera browser, use multiple background processes. In these cases, ending the main process may not fully resolve the issue. If the program continues to hang, a system restart
+may be required to free locked system resources and restore normal operation. Preventive measures include clearing browser cache and temporary files, disabling unnecessary extensions, and keeping applications updated.
+
+Persistent unresponsiveness can also result from corrupted program files. Reinstalling the application using a fresh download from the official website can often resolve repeated “Not Responding”
+behavior and improve overall system performance
