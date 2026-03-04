@@ -1,0 +1,78 @@
+          #### Keyboard / Mouse Not Working – Input Device Troubleshooting ####
+
+
+## Scenario / Issue
+- Keyboard and/or mouse not responding in Windows  
+- No input detected from wired or wireless devices  
+- Devices may or may not appear in Device Manager  
+- In some cases, devices may not function before Windows loads  
+
+## Root Causes Considered
+- Loose or faulty USB connection  
+- Defective keyboard or mouse hardware  
+- USB port malfunction  
+- Wireless device battery or receiver issue  
+- Corrupted or missing device drivers  
+- USB controller malfunction  
+- USB support disabled in BIOS  
+
+## Troubleshooting Steps
+
+1. **Check Physical Connections**
+   - Ensure keyboard and mouse are securely plugged in  
+   - Try a different USB port...  connect devices directly to the PC  
+
+2. **Test with Another Device**
+   - Test the keyboard/mouse on another computer  
+   - Use a known working keyboard or mouse on the affected PC  
+
+3. **Check for Power or Wireless Issues**
+   - For wireless devices:
+     - Replace batteries  
+     - Confirm USB receiver is connected  
+     - Power cycle the device (turn off/on)  
+   - For wired devices:
+     - Inspect cable for physical damage  
+
+4. **Restart the Computer**
+   - Restart Windows to reload device drivers  
+   - Clear temporary USB or driver-related errors  
+
+5. **Check Device Manager**
+   - Open Device Manager  
+   - Expand **Keyboards** and **Mice and other pointing devices**  
+   - Look for warning icons (⚠️)  
+   - Right-click device → Properties → Review device status  
+
+6. **Update or Reinstall Drivers**
+   - Right-click device → Update driver  
+   - If issue persists:
+     - Right-click device → Uninstall device  
+     - Restart PC to allow Windows to automatically reinstall drivers  
+
+7. **Check USB Controllers**
+   - In Device Manager, expand **Universal Serial Bus controllers**  
+   - Look for errors or disabled devices  
+   - Restart or re-enable USB Root Hub if necessary  
+
+8. **Advanced Check – BIOS Configuration**
+   - If keyboard/mouse does not work before Windows loads:
+     - USB support may be disabled in BIOS  
+     - Ensure **USB Legacy Support** is enabled  
+   - BIOS changes require system restart  
+
+## Findings
+- chek first for issues were that related to loose connections, faulty USB ports, or driver corruption.  
+- Restarting the system resolved temporary USB controller failures.  
+- In rare cases, BIOS-level USB support configuration prevented device detection at boot.  
+
+## Resolution
+- Secured physical connections and tested alternative ports/devices.  
+- Updated or reinstalled device drivers.  
+- Verified USB controller functionality.  
+- Confirmed BIOS USB settings when necessary.  
+
+## Outcome
+- Keyboard and mouse functionality restored.  
+- Devices properly detected in Windows and at system startup.  
+- System input stability confirmed.
