@@ -1,0 +1,87 @@
+                     #  # Cannot Log In / Account Issues # #
+
+
+    Initial check:
+Wrong password or username
+Caps Lock / Num Lock enabled
+Temporary profile glitch
+
+-If possible, log in with another user to isolate the issue
+
+
+    Secondary Check/cause:
+Corrupted user profile
+Account disabled or locked
+Network issues for domain accounts
+
+Windows + R → control userpasswords2
+Verify the account exists and is enabled (Should show if disabled or not)
+
+    Steps / Resolution:
+Check user accounts
+Run: control userpasswords2 
+Verify the account exists and is enabled
+
+
+        Reset password (if needed)
+- For local accounts: reset through Settings → Accounts → Sign-in options
+- For Microsoft accounts: reset via account.microsoft.com
+3. Check for domain issues (if applicable)
+Ensure PC is connected to the network/domain
+Try logging in with another domain account to verify connectivity
+4. Temporary profile fix
+If logged into a temporary profile, sign out and restart
+Check C:\Users for the real profile folder
+
+        Escalation
+Cause (advanced/root cause):
+Corrupted registry for the user profile
+Domain/Active Directory misconfiguration (for work PCs)
+Permissions issues
+
+
+
+      Steps / Resolution:
+Repair corrupted user profile
+
+Log in with another admin account, back up the user profile, create a new account, restore files, and check registry profile issues. 
+If this is a school/work Computer you’d have to  escalate to IT and they'd follow those steps because they would have access C:\Users
+
+
+Steps will take IT: Log in with another admin account
+Navigate to C:\Users[corrupted_profile] and back up important files
+Create a new account and copy files to the new profile
+
+
+Check registry for profile issues
+
+
+Open Registry Editor → HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+
+
+Look for .bak entries or incorrect paths for the user profile
+.bak only appears if Windows failed to load a user profile correctly.
+Usually after a login failure: Windows creates a new temporary profile Renames the old one with .bak
+
+
+
+If a .bak entry is found, would backup/Export the the .bak registry,
+Do NOT edit  and or delete directly without backing up
+Right-click the .bak folder → Export → save somewhere safe
+Rename the temporary profile, instead of deleting keeps temp folders backup in case 
+Remove .bak from the Correct profile, and ensure the ProfileImagePath points to the correct user folder.
+-> if it doesn't solve the issue you have a real corrupt profile. back up computer to external drive 
+Check permissions
+Right-click user folder → Properties → Security
+Ensure the user has full control
+
+
+          Escalation
+If a domain account cannot log in, report it to IT and give them the Event Viewer logs for authentication errors
+use Active Directory (AD) / Directory Manager to handle the account to:
+
+Check account status (disabled, expired, or permissions).
+Unlock the account if it’s locked due to too many failed logins.
+Force profile/replication updates if needed for login.
+Reset the password if the user forgot it.
+View logs from the domain controller to diagnose authentication issues.
