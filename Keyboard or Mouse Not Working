@@ -1,0 +1,62 @@
+                         Keyboard / Mouse Not Working – Troubleshooting
+
+
+
+      Check Physical Connections
+Check to make sure keyboard and mouse are properly plugged in
+Try a different USB port
+Don't use USB hubs; connect directly to the PC
+
+
+      Test with Another Device
+Test keyboard/mouse on other computer
+Try a known-working keyboard or mouse on the affected PC
+
+
+      Check for Power or Wireless Issues
+For wireless devices:
+
+
+Check batteries
+Ensure the USB receiver is connected
+Turn the device on/off
+
+
+For wired devices:
+Check for damaged cables
+
+
+      Restart the Computer
+Restart Windows to reload device drivers
+Temporary driver or USB errors may be cleared after restart
+
+
+    Check Device Manager
+Open Device Manager
+Expand Keyboards and Mice and other pointing devices
+Look for warning icons (⚠️)*caution icon
+Right-click device → Properties to check device status
+
+
+Update or Reinstall Drivers
+Right click device → Update driver
+If issue continues:
+
+
+Right click device → Uninstall device
+Restart PC to allow Windows to reinstall the driver
+
+
+      Check USB Controllers
+In Device Manager, expand Universal Serial Bus controllers
+Check for errors or disabled devices
+Restart USB Root Hub if needed
+
+
+      (If Devices Don’t Work at Boot)
+If keyboard or mouse does not work before Windows loads:
+
+
+Possible USB support disabled in BIOS
+Ensure USB Legacy Support is enabled
+BIOS changes require system restart
