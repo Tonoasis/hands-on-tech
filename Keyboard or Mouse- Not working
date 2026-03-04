@@ -1,0 +1,48 @@
+                ### Keyboard / Mouse Not Working – Troubleshooting ###
+## Overview
+This lab demonstrates a structured troubleshooting methodology for resolving keyboard and mouse input failures in Windows.
+The process progresses from basic hardware checks to driver validation and system-level diagnostics, illustrating how to 
+isolate root causes and restore stable input functionality.
+
+## Scenario / Issue
+- Keyboard and/or mouse not responding
+- Keys may not type, mouse pointer may not move
+
+---
+
+## Basic Troubleshooting
+**Likely Cause:** Loose connection, dead batteries, temporary driver hiccup  
+**Steps / Resolution:**
+1. Check physical connections  
+   - USB devices: unplug/replug  
+   - Wireless: verify batteries and USB dongle  
+2. Try different ports  
+3. Restart the computer
+
+---
+
+## Driver and System Checks
+**Likely Cause:** Outdated or corrupted drivers, software conflicts  
+**Steps / Resolution:**
+1. Open Device Manager → check for warning icons or unknown devices  
+2. Update drivers: right-click device → Update driver → Search automatically  
+   - If that fails, download manufacturer drivers manually  
+3. Disable and re-enable device to reset it  
+
+---
+
+## Escalation / Advanced Troubleshooting
+**Possible Cause:** Conflicting USB devices, corrupted system files, BIOS/UEFI settings, hardware failure  
+**Steps / Resolution:**
+1. Test the device on another computer  
+2. Check USB controllers: update/reinstall drivers via Device Manager → Universal Serial Bus controllers  
+3. Verify BIOS/UEFI settings (USB Legacy Support enabled)  
+4. Run System File Checker (`sfc /scannow`)  
+5. Restart system to initialize drivers and USB controllers
+
+---
+
+## Outcome
+- Device functionality restored (or identified as faulty for replacement)  
+- System stabilized for input devices  
+- Demonstrates layered troubleshooting methodology from simple fixes to advanced diagnostics
