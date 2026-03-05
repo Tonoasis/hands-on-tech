@@ -58,7 +58,7 @@ issue
 The problem that couldn’t be resolved. I'm now  looking for root causes, system-level issues, or network/configuration problems that may require escalation to IT specialists.
 
 
-Steps
+### Steps ###
 #1 Review Event Viewer logs for PrintService errors.
 Why:
 -Event Viewer records system events, errors, and warnings.
@@ -86,3 +86,25 @@ Click Add a printer or scanner → and then Reinstall
 
 
 Removing and Re-adding the printer refreshes configuration and driver settings, resolving corruption and or misconfigutations ports
+
+
+3. Verify network connectivity and printer IP address for network printers.
+
+Why:  
+- A network printer may not work if the computer cannot reach the printer   
+- Common issue may include: printer offline, firewall wrong IP,
+
+1. Open Command Prompt (`cmd`)  
+2. Ping `[printer IP address]`   
+3. If successful, network is okay; if timeout, check printer connection and IP
+
+*Verifying network connectivity ensures the computer can communicate with the printer.*
+
+—----------------------------------------------------------------------------------------------------------------
+
+4\. Restart the system to clear locked services or driver issues.
+
+- Sometimes services or drivers remain in a bad state after other fixes  
+-  A full reboot resets system services and network connections
+
+*Restarting the system can apply driver or configuration changes, ensuring printing functions properly.*
