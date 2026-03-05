@@ -1,0 +1,54 @@
+
+Microsoft Store Not Opening
+
+Issue (What the user sees/experiences):
+- Clicking Microsoft Store does nothing or it crashes immediately.
+-  Error messages like “This app can’t open” or “Store isn’t available” may appear.
+- Store tiles might be blank, or the app opens briefly then closes.
+
+Cause (Root cause or most likely cause):
+- Corrupted Store app or registration.
+- Missing or damaged system files.
+- Outdated Windows updates.
+- Conflicting user profile or temporary data.
+
+Steps / Resolution (Numbered steps, commands, settings):
+
+1. Restart the computer
+- Clears temporary glitches or stuck processes.
+2. Run Windows Update
+- Install any pending updates, restart if needed.
+3.Repair or Reset the Store app
+Settings → Apps → Apps & Features → Microsoft Store → Advanced Options → Repair / Reset
+
+
+[ScreenShot1.png]
+
+
+4. Re-register Microsoft Store via PowerShell
+> make surea APPS Closed
+   	Open PowerShell 
+   Run:
+     Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+   - rebuilds app registration for all built-in apps.
+
+
+[ScrennShot2.png]
+
+
+5. Check for corrupted user profile
+Log in with another user account
+ If Store works there, back up user data and create a new profile.
+
+6. Run SFC / DISM
+   - sfc /scannow → repairs system files.
+- DISM /Online /Cleanup-Image /RestoreHeal -> fixes files SFC cant
+
+7. Check network connectivity
+- Microsoft Store requires internet access; ensure a firewall and or proxy is blocking it.
+
+Why It Happened & Why the Fix Worked 
+- Store app registration or its dependencies were corrupted, preventing the app from launching.
+- Re-registering the app restores its manifest and connections to system files
+- Resetting or creating a new user profile removes profile-specific corruption..
+- Repairing system files with SFC/DISM ensures all required Windows components are intact.
