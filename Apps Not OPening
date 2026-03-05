@@ -1,0 +1,86 @@
+
+# Apps Not Opening – Troubleshooting
+
+## Scenario / Issue
+Users report that certain applications do not launch or crash immediately upon opening.  
+Symptoms include:  
+- Application window fails to appear  
+- Error messages such as “App failed to start” or “This app can’t open”  
+- Multiple attempts to open the app fail  
+
+---
+
+## Root Causes Considered
+- Application did not install properly or is corrupted  
+- Windows updates are missing, preventing the app from running  
+- User profile or temporary files are causing conflicts  
+
+---
+
+## Initial Troubleshooting / First Steps
+
+1. **Restart the Computer**  
+   - Clears temporary software glitches or locked resources  
+
+2. **Check Task Manager**  
+   - Open: "Ctrl + Shift + Esc"  
+   - End the app process if it is running  
+   - Attempt to relaunch the application  
+
+3. **Check Windows Updates**  
+   - Settings → Update & Security → Windows Update  
+   - Install any pending updates and restart if required  
+
+4. **Verify App Installation**  
+   - Settings → Apps → Apps & Features  
+   - Select the affected app → Repair or Reinstall  
+
+5. **Test on Another User Account**  
+   - Determines if the issue is profile-specific  
+
+---
+
+## Advanced Troubleshooting / Escalation
+
+**Steps Taken:**
+
+1. **Review Logs and Event Viewer**
+   - Open Event Viewer: "Windows + R → eventvwr.msc"  
+   - Navigate: Windows Logs → Application / System  
+   - Look for red Error icons at the time of the app failure  
+   - Double-click error for details: name, code, description  
+
+2. **Decide the Appropriate Fix**
+   - **Permission error:** Fix permissions or adjust group policies  
+   - **Missing file error:** Repair or reinstall the app  
+   - **System error:** Run SFC and DISM to repair system files  
+
+3. **Repair User Profile (if profile-specific)**
+   - If app works on another account, back up the user’s data  
+   - Recreate or repair the profile  
+   - Restore user data and verify the app launches successfully  
+
+4. **Repair System Files**
+   - Open Command Prompt as Administrator:  
+    cmd
+     sfc /scannow
+     DISM /Online /Cleanup-Image /RestoreHealth
+    
+   - Repairs corrupted Windows system files that may prevent the app from opening  
+
+5. **Check Domain / Active Directory Issues (if applicable)**
+   - Verify user account permissions  
+   - Check AD group membership  
+   - Confirm the account isn’t restricted or misconfigured  
+
+6. **Apply Updates / Hotfixes**
+   - Install missing Windows patches  
+   - Apply vendor updates or Microsoft hotfixes  
+   - Ensures the app has required system files, permissions, and correct licensing  
+
+---
+
+## Outcome / Findings
+- Applications failed to open due to [cause, e.g., corrupted installation, system file issue, or profile conflict]  
+- Repairing the app, updating system files, or recreating the user profile resolved the issue  
+- Event Viewer logs provided insight into root causes for future troubleshooting  
