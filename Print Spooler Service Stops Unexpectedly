@@ -1,0 +1,81 @@
+                                        -  Print Spooler Service Stops Unexpectedly -
+
+       ## Issue ##
+- Printing fails and print jobs do not complete.
+- The printer may appear offline or cannot connect.
+- Error messages such as **“Print Spooler not running”** appear.
+- The print queue may be stuck or empty.
+
+    ## Cause ## (Root Cause / Most Likely Causes)
+- a Corrupted print jobs in the queue.
+- Outdated or corrupted printer drivers.
+- Conflicting software or service issues.
+- Windows service misconfiguration.
+
+      ## Steps / Resolution ##
+### 1. Restart the Print Spooler Service
+1. Press **Win + R**
+2. Type "services.msc"
+3. Locate **Print Spooler**
+4. Right-click → **Restart**
+
+![Restart Print Spooler](screenshots/screenshot1.png)
+
+Restarting the service clears temporary issues and resets the printing process.
+
+--- - - -
+
+# 2. Clear the Print Queue
+1. Navigate to: C:\Windows\System32\spool\PRINTERS
+2. Delete all files in this folder.
+
+![Clear Print Queue](screenshots/screenshot2.png)
+
+Removing these files clears corrupted or stuck print jobs that may cause the spooler service to crash.
+
+--- ---
+
+# 3. Update or Reinstall Printer Drivers
+1. Open **Device Manager**
+2. Expand **Print Queues**
+3. Right-click the printer → **Update Driver**
+
+If updating fails:
+- Uninstall the printer
+- Download and install the **latest driver from the manufacturer’s website**
+
+--- ---
+
+# 4. Set Print Spooler Service to Automatic
+1. Open **Services**
+2. Locate **Print Spooler**
+3. Right-click → **Properties**
+4. Set **Startup Type → Automatic**
+
+![Set Spooler to Automatic](screenshots/screenshot3.png)
+
+This ensures the service starts automatically when Windows boots.
+
+---
+
+# 5. Check for Conflicting Software
+- Antivirus or third-party print utilities may interfere with the Print Spooler service.
+- Temporarily disable or uninstall them to test.
+
+This step helps isolate whether security software or print management tools are causing the service to crash. If printing works after disabling the software,
+the conflict is confirmed and exclusions or updates should be applied.
+
+---
+
+# 6. Restart the Computer
+Restart the system to ensure all changes take effect and services initialize properly.
+
+---
+
+            ## Why It Happened ##
+- The **Print Spooler service** stopped due to corrupted print jobs, driver issues, or service conflicts.
+- Clearing the print queue removed stuck or damaged jobs.
+- Restarting the spooler service reset the printing process.
+- Updating or reinstalling drivers ensured proper communication between Windows and the printer.
+- Setting the service to **Automatic** prevents the spooler from failing to start during system boot.
+
