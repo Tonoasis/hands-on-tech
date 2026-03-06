@@ -1,0 +1,72 @@
+# Windows Services Not Running or Misconfigured ##
+
+      ## Issue ##
+- Certain Windows features or apps do not work.
+- Errors appear stating a service is not running.
+- System functions fail after updates or software installs.
+- Services stop unexpectedly or do not start at boot.
+
+      ## Cause  ## (Root cause or most likely cause)
+- Required Windows services are disabled or set to the wrong startup type.
+- Services were changed by updates, third-party software, or manual configuration.
+- Dependency services are not running.
+- Service account permissions are misconfigured.
+
+            ## Steps / Resolution ##
+1. Check service status
+- Press: Win + R
+- Type: services.msc
+- Locate the service related to the issue.
+- Check if the service is "Running" or "Stopped".
+
+[Screenshot1.png]
+
+
+ 2. Verify startup type
+- Right-click the service -> Properties
+- Set Startup type to:
+- "Automatic" (most system services)
+- "Manual" (services started only when needed)
+
+[Screenshot2.png]
+
+
+3. Start or restart the service
+- Right-click the service -> Start or Restart.
+
+
+4. Check service dependencies
+- Open Service Properties: Dependencies tab
+- Ensure required dependency services are running.
+
+[Screenshot3.png
+
+
+ Dependencies Tab 
+> Top box: Services this service depends on
+- These must be running.
+- Check and start these services first.
+
+> Bottom box: Services that depend on this service
+- These services may stop if this service stops.
+- This section is informational and usually not part of troubleshooting.
+
+
+ 5. Reset service configuration
+- Open **Command Prompt** or **PowerShell** as Administrator.
+- Reconfigure startup type if needed (can also be done in `services.msc`).
+Run system file repairs:'sfc /scannow"
+> If issues persist: " DISM /Online /Cleanup-Image /RestoreHealth "
+
+
+6. Restart the computer
+- Ensures all service configuration changes apply correctly during boot.
+
+
+
+      ##  Why It Happened & Why the Fix Worked ##
+- Windows relies on background services to perform core system tasks.
+- If a required service is disabled, stopped, or misconfigured, dependent features fail.
+- Restarting the service and correcting the startup type restores functionality.
+- Checking dependencies ensures required services are running.
+- Repairing system files with SFC and DISM restores corrupted Windows components that services rely on.
