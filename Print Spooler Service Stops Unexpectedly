@@ -1,0 +1,52 @@
+                                    Print Spooler Service Stops Unexpectedly
+
+      Issue:
+- Printing fails, print jobs do not complete.
+- The printer appears offline or cannot connect.
+- Errors like “Print Spooler not running” 
+-  The print queue may be stuck or empty.
+
+      Cause (Root cause or most likely cause):
+- Corrupted print jobs in the queue.
+- Outdated or corrupted printer drivers.
+- Conflicting software or service issues.
+- Windows service misconfiguration.
+
+      Steps / Resolution:
+1. Restart the Print Spooler service
+  services.msc
+-  Locate “Print Spooler” → Right-click → Restart
+
+
+[screenshot1.png]
+ This clears stuck jobs and resets the service.
+
+
+2. Clear the print queue
+   - Navigate to C:\Windows\System32\spool\PRINTERS
+[screnshot2.png]
+    Delete all files in this folder to remove stuck print jobs.
+
+3. Update or reinstall printer drivers
+   - Open Device Manager → Print queues → Right-click printer → Update driver
+   - If update fails, uninstall printer, then reinstall the latest driver from the manufacturer's website.
+
+4. Set Print Spooler service to Automatic
+   - Services → Print Spooler → Properties → Startup type → Automatic
+
+[Screensshot3.png]
+   - Ensures the service starts with Windows.
+
+5. Check for conflicting software
+   - Antivirus or third-party print utilities may interfere with the Print Spooler service, temporarily disable or uninstall to test.
+      This step is used to isolate whether security software or print management tools are blocking or crashing the Print Spooler service. If printing works while the software is disabled, 
+      the conflict is confirmed and exclusions or updates would be applied.
+
+6. Restart the computer
+   - Ensures all changes take effect and services initialize properly.
+
+        Why It Happened:
+- The Print Spooler service was stopped or stuck due to corrupted jobs, bad drivers, or service misconfigurations.
+- Setting the service to Automatic guarantees it starts with Windows, preventing unexpected stops.|
+- Updating or reinstalling drivers ensured the service could communicate with the printer.
+- Restarting the service and clearing the queue removed conflicts.
