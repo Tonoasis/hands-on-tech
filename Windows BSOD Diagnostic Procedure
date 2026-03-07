@@ -1,0 +1,165 @@
+                                                                          Windows BSOD Diagnostic Procedure
+
+
+                                                          Windows suddenly stops and displays a blue screen with an error code
+                                                                     (EXAMPLE:  0x0000007E, 0x0000001E).
+
+
+
+                                                       The system may automatically restart or remain on the blue screen until manually rebooted.
+                                    A Blue Screen of Death (BSOD) is a critical system error in Windowsthat forces the operating system to stop to prevent further damageto the system.
+
+
+  # Cause # 
+BSODs occur when Windows encounters a critical error it cannot safely recover from. Common causes include:
+Faulty or outdated device drivers
+Corrupted system files /  Windows updates Errors
+Failing hardware (RAM, HDD/SSD, CPU, GPU)
+Conflicting software or system misconfiguration
+
+
+
+
+
+      # Steps / Resolution #
+Step 1: Capture Error Info
+Note the BSOD error code and message.
+Use a camera/screenshot in a lab to document the screen.
+If the system auto-restarts, check Event Viewer: System for recent critical errors.
+> No critical errors were observed because the system has not experienced a BSOD or significant system failure.
+
+Step 2 – Repair System Files
+Run System File Checker to repair corrupted system files:
+  - sfc /scannow
+  - Run DISM to repair the Windows image:
+
+  - DISM /Online /Cleanup-Image /RestoreHealth
+Update Windows to ensure all patches are installed.
+
+
+Remove or update any recently installed drivers or software.
+
+
+
+[Screenshot2.png] 
+
+
+
+Step 3: Issue Not Resolved
+If BSOD persists after Step 2:
+
+Boot into Safe Mode.
+Safe Mode loads Windows with only essential drivers and services, which helps isolate driver or software conflicts that may be causing system crashes.
+—---------------------------------------------------------------------------------------------------
+				Boot Safe Mode
+Open Settings
+Go to Update & Security > Recovery.
+Under Advanced startup: click Restart now.
+
+
+After your PC restarts, you'll see a Choose an option screen:
+Click Troubleshoot > Advanced options > Startup Settings > Restart
+Boot in Safe Mode
+—------------------------------------------------------------------------------
+Boot Safe Mode
+
+Run (Windows + R):  msconfig, ->  press Enter.
+
+
+ Boot tab:
+Check Safe boot and select the type you want
+> Minimal = regular Safe Mode
+After troubleshooting, you need to uncheck Safe boot in msconfig to boot normally again.
+—--------------------------------------------------------------------
+
+Disable recently installed drivers or software.
+Roll back problematic drivers.
+
+[Screenshot3.png]
+Note currently grayed out because: No Previous Driver Exists / Driver Installed via Windows Update / Using a Generic Driver
+Test whether the BSOD repeats.
+
+
+
+
+Step 4 – Hardware Diagnostics
+Test RAM with Windows Memory Diagnostic 
+Check HDD/SSD health using chkdsk or manufacturer tools.
+
+
+[screenshot4.png]
+
+
+[screenshot5.png]
+> Monitor CPU and GPU temperatures and overall system stability using hardware monitoring or stress testing tools, as overheating components can lead to system instability and BSOD errors.
+
+Step 5 – Memory Dump Analysis
+BSODs generate a .dmp file in C:\Windows\Minidump
+> Locate the dump file - C:\Windows\Minidump
+
+ When a BSOD occurs, Windows saves a snapshot of the system memory (a “minidump”) at the moment of the crash. This file contains clues about what caused the crash like the driver, hardware, or system module that failed.
+
+[screenshot6.png] 
+Note: The Minidump folder is empty because the system has not experienced a BSOD, so Windows has not generated any crash dump files.
+
+The goal of this step is to analyze a Windows crash dump file to determine what component caused a hypothetical Blue Screen of Death (BSOD). Windows typically saves these crash reports as .dmp files in:
+C:\Windows\Minidump
+These files contain a snapshot of system memory at the moment the crash occurred. They act almost like an autopsy report for its system failure, allowing us to trace back which driver, module, or kernel component triggered the crash.
+
+Step 5 – Open the dump with a tool
+Analyze the dump using WinDbg or BlueScreenView to identify the driver or module causing the crash.
+Two common tools can analyze these files: WinDbg and BlueScreenView. I chose to use WinDbg, which is Microsoft’s official debugging tool and provides more detailed analysis. 
+Since WinDbg already offers the necessary functionality and deeper debugging capabilities, installing an additional tool would have been redundant for this exercise.
+
+main options:
+Option 1:  BlueScreenView
+Action: Download & Open BlueScreenView and let it scan the Minidump folder.
+
+Option 2: WinDbg (advanced)
+Action: Open WinDbg
+ File 
+ Open Crash Dump 
+ select the .dmp file.
+In the command bar, type: !analyze -v
+
+
+> WinDbg gives a more detailed analysis, showing driver stack traces, error codes, and possible causes. It’s more technical, but very powerful if you want to troubleshoot difficult crashes.
+
+
+[Screenshot7.png]
+Inside WinDbg, I browsed to the standard crash dump directory:
+C:\Windows\Minidump
+However, the folder was empty. This makes sense because my PC has not experienced a BSOD, so Windows has not generated any crash dump files. Without a crash event, there is no memory snapshot to analyze.
+—-----
+If a .dmp file had been present, the next step would have been to load it in WinDbg and run the command:
+!analyze -v
+This command performs will automated crash analysis and produces a detailed report explaining the likely cause of the failure.
+
+Probable cause:
+
+During research and examples of BSOD debugging, a key section to examine in the analysis output is:
+Crash Analysis Indicator: <driver/module>
+This line identifies the driver or system module most likely responsible for the crash. Investigating this component (updating, rolling back, or reinstalling the associated driver) is typically the first step toward resolving the issue.
+
+
+Step 6: Verify and Test
+Reboot the system and confirm that Windows logs in normally.
+Check Event Viewer to confirm no recurring critical errors.
+
+
+
+
+[Screenshot8.png]
+
+Notes / Lab Takeaways
+BSOD error codes provide clues to the root cause; logging and screenshots are critical for analysis.
+SFC/DISM repair and driver updates fix many software-related BSODs.
+Persistent BSODs often indicate hardware failure; memory dump file analysis pinpoints the problematic module.
+
+
+    # Why it Work #
+This structured approach isolates the cause of a BSOD step by step. Reviewing logs and stop codes identifies failure timing, while SFC and DISM fix common system file issues.
+Safe Mode and driver rollback help determine if software or drivers are responsible. Hardware diagnostics check RAM and storage stability. Finally, memory dump analysis of the file with WinDbg pinpoints the likely driver or
+module causing the crash. Following these steps ensures both software and hardware issues are systematically addressed.
+
+
