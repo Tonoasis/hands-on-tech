@@ -1,0 +1,38 @@
+                      # Internet Not Working #
+
+## Scenario / Issue
+Users could not access the internet despite an active network connection.  
+- Webpages wouldn’t load in any browser  
+- Other apps could not connect  
+- Network icon: “No Internet” or “Limited Connectivity”
+
+## Root Causes Considered
+- DNS misconfiguration  
+- Cached bad DNS entries  
+- Network adapter misconfigured, disabled, or driver issue  
+- IP conflict / incorrect network settings
+
+## Troubleshooting Steps
+1. Verified physical connection (Wi-Fi/Ethernet)  
+2. Checked other devices on network  
+3. Ran "ipconfig /all" - confirmed IP, subnet, gateway, DNS  
+4. Tested connectivity:
+   - Ping localhost, gateway, external IP ("8.8.8.8")  
+   - Ping domain name ("google.com")  
+   - Ran "nslookup google.com"  
+5. Flushed DNS cache ("ipconfig /flushdns")  
+6. Reset network stack ("netsh winsock reset")  
+7. Updated/reinstalled network adapter driver (if needed)
+
+## Findings
+- IP assigned correctly  
+- Gateway reachable  
+- Could ping external IP, but DNS resolution failed  
+- Local DNS misconfigured / cached bad entries
+
+## Resolution
+- Flushed DNS and reset network stack - restored domain resolution  
+- Updated network adapter driver - ensured stable connection
+
+## Outcome
+Internet access restored, DNS resolving correctly, network adapter fully functional.
