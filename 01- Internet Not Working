@@ -1,0 +1,127 @@
+Internet Not Working
+
+
+Can you open any website?
+Are others experiencing this? 
+Does Wi-Fi/Ethernet show "Connected”? Are you on Wi-Fi / Ethernet
+Is the network icon showing an error?
+internet vs local network? Can you access local resources (shared drive, printer, router page)
+	
+                     Issue
+
+Users could not access the internet despite the system showing an active network connection (Wi-Fi/Ethernet icon shows: No Internet or Limited Connectivity)
+Webpages won’t load in any browser
+Other apps cannot connect to the internet
+
+                    Cause
+DNS misconfiguration on the network adapter prevented domain name resolution.
+Cached bad DNS entries
+Network adapter disabled, misconfigured, or driver issue
+IP conflict or incorrect network settings
+
+
+                   Steps / Resolution
+Verified network connection status
+Check physical network connection (Wi-Fi or Ethernet cable)
+Other devices are connected/have internet or no issues
+
+
+
+
+Run ipconfig /all to check IP address, subnet, gateway, and DNS
+This will show all your network adapters and their settings. Focus on the adapter that is connected (Wi-Fi or Ethernet)
+
+Reviewed IP configuration with ipconfig /all  = IP address, subnet, gateway, and DNS
+IP address = 192.168.65	 Range:(192.168.1.1 - 192.168.1.254) 
+Subnet mask = 255.255.255.0
+Default Gateway = 192.168.1.254
+DNS Server = Should be (Router, Corporate, Public)
+
+
+
+                [ Terminal ScreenShot.png ]
+
+
+
+Bad: 
+IP starts with 169.254.x.x (Link Local): DHCP failed (no IP assigned)
+Release and renew IP: 
+cmd:
+ipconfig /release
+ipconfig /renew
+
+If Gateway is missing - PC cannot reach the router - no internet
+Check router and reconnect to the network // router power + connection 
+If necessary, set the gateway manually in IPv4 properties.
+
+
+
+
+            [+++++ Wifiproperties.png +++++++]
+
+
+
+
+
+
+DNS missing or weird - IP works, but domain names won’t resolve - can ping IP but not websites
+
+Flush DNS:
+Ipconfig /flushdns (clear catch addresses)
+netsh winsock reset (reset fixes network stack) 
+
+potentially  manuel
+Google DNS: 8.8.8.8, 8.8.4.4
+Cloudflare DNS: 1.1.1.1, 1.0.0.1 
+		
+
+
+
+
+       [+++++ Wifiproperties2.png +++++++]
+       [+++++ Wifiproperties3.png +++++++]
+       [+++++ Wifiproperties4.png +++++++]
+
+
+
+
+
+
+Update or reinstall network adapter driver in Device Manager. 
+Only if others solution don’t work or configurations are ok and no internet access
+
+
+              [+++++ DeviceManger.png +++++++]
+
+
+Testing:
+Tested connectivity using ping
+ping “IP gateway” // is “default gateway” found in ipconfig /all
+
+If it works - you can reach your router. + 
+If it fails - problem with adapter, cable, or Wi-Fi
+
+Test Wifi / Connection 
+Ping a public IP (like Google’s DNS) // to know website public ip google it 
+ping 8.8.8.8
+
+If it works: internet connection is okay.
+If it fails: network issue outside your PC.
+
+
+Ping a domain name: DNS resolution (domain - IP) / Can I reach websites
+
+		ping google.com
+			If it works - DNS is okay.
+If it fails - DNS problem (even if the internet works by IP).
+
+
+Note:  8.8.8.8 vs nslookup google.com 
+
+Nslookup google.com:
+asks local DNS for site IP Website’s actual IP (from my local DNS) + DNS is working and gives site IP  
+
+ping 8.8.8.8:
+ DNS (Google) | raw connection test to internet
+
+The DNS cache or adapter settings were preventing the system from resolving domain names. Flushing DNS and resetting the network stack cleared invalid entries and restored proper communication with DNS servers, allowing internet access. Updating drivers ensured the adapter functioned correctly.
