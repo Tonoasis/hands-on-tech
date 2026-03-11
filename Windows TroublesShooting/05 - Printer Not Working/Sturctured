@@ -1,0 +1,80 @@
+# # # # # Printer Not Working – Troubleshooting # # # # # 
+
+## Scenario / Issue
+Users are unable to print documents, or print jobs fail to complete.  
+Symptoms include:
+- Print jobs stuck in the queue  
+- Printer not responding  
+- Applications failing to send print jobs  
+
+
+## Initial Troubleshooting
+**Steps Taken:**
+1. Verified the printer is powered on and properly connected.  
+2. Confirmed the correct printer is set as the default printer.  
+3. Checked the print queue for paused or stuck print jobs.  
+4. Restarted the application and attempted to print again.  
+
+**Devices and Printers Window**
+- Location: Control Panel - Devices and Printers 
+- Shows available printers, their status, and default printer settings  
+- [ Screenshot1 ]
+
+
+## System-Level Troubleshooting
+**Steps Taken:**
+1. **Restart Print Spooler Service**
+   - Open Services: Windows + R: services.msc  
+   - Locate **Print Spooler** (handles interaction with the printer)  
+   - Restart to clear stuck print jobs  
+   - Ensure **Startup Type** is set to Automatic  
+
+   [ Screenshot2 ]
+
+2. **Check Device Manager**
+   - Open Device Manager - Print queues  
+   - Verify printer driver status  
+   - Update or reinstall printer driver if necessary  
+
+   [ Screenshot3 ]
+
+**Why These Steps Work:**  
+- Restarting the Print Spooler restores communication between Windows and the printer by clearing stalled print jobs.  
+- Updating or reinstalling printer drivers replaces corrupted files and resolves configuration issues that prevent printing.
+
+## Escalation (Advanced / Root Cause)
+**Potential Causes:**  
+- Corrupted printer driver  
+- Misconfigured printer settings  
+- System-level or network-related issues  
+
+**Steps Taken:**
+1. **Review Event Viewer Logs**
+   - Open Event Viewer: Windows + R - eventvwr.msc  
+   - Navigate: Windows Logs - System" or "Applications 
+   - Look for **PrintService** errors, driver conflicts, or service failures  
+   - Note Event ID and description for escalation purposes  
+
+   [ Screenshot4 ]  
+
+2. **Remove and Re-Add Printer**
+   - Open Settings: Devices - Printers & Scanners  
+   - Select printer - Remove device  
+   - Click “Add a printer or scanner” - reinstall  
+   - Why: Refreshes driver and configuration to resolve corruption or misconfiguration  
+
+3. **Verify Network Connectivity** (for network printers)
+   - Open Command Prompt - "ping [printer IP address]"  
+   - Successful ping confirms network connectivity  
+   - If timeout, check printer connection, IP, or firewall settings  
+
+4. **Restart the System**
+   - Reboots clear locked services or driver issues  
+   - Ensures configuration changes are applied and printing functions properly  
+
+
+## Outcome / Findings
+- Restarting the Print Spooler and verifying drivers restores printing functionality (if the printer is connected)  
+- Removing and re-adding the printer resolves misconfigurations  
+- Checking network connectivity ensures communication with network printers  
+- Event Viewer logs provide insight for IT escalation if the issue persists  
