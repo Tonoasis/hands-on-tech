@@ -1,0 +1,73 @@
+                                                         # No Sound in Windows – Audio Troubleshooting ###
+
+## Overview
+This lab documents the troubleshooting process for resolving audio output issues in Windows systems. The objective was to identify whether 
+the problem was caused by incorrect audiosettings, hardware connections, driver issues, or BIOS configuration.
+
+## Scenario / Issue
+- User unable to hear audio from speakers or headphones  
+- No system sounds or application audio output  
+- Audio device may or may not appear in Device Manager  
+
+## Root Causes Considered
+- System volume muted or set too low  
+- Incorrect audio output device selected  
+- Loose or incorrect cable connections  
+- Faulty speakers or headphones  
+- Missing, corrupted, or incorrect audio drivers  
+- Onboard audio disabled in BIOS  
+
+## Troubleshooting Steps
+
+1. **Check Volume and Mute Settings**
+   - Verified Windows was not muted  
+   - Increased system volume  
+   - Confirmed speakers/headphones were powered on and not muted  
+
+2. **Verify Correct Audio Output Device**
+   - Clicked speaker icon in taskbar  
+   - Opened sound settings  
+   - Toggled through available output devices until sound was detected  
+
+3. **Test Speakers or Headphones**
+   - Connected a different headset/speakers  
+   - Confirmed issue was not hardware specific  
+
+4. **Check Cable Connections**
+   - Ensured audio cables were securely connected  
+   - On desktop PC, verified connection to green audio jack (front or rear)  
+
+5. **Check Audio Drivers**
+   - Opened Device Manager  
+   - Expanded **Sound, video and game controllers**  
+   - Reviewed device status under Properties  
+   - *(Reference: Screenshot1 – Device Manager audio status)*  
+
+6. **Update or Reinstall Drivers**
+   - Right-clicked audio device - Update driver  
+   - If Windows could not locate driver automatically:
+     - Downloaded correct driver from manufacturer  
+
+   **Driver Sources:**
+   - Laptop / Prebuilt PC - Search using PC model number  
+   - Custom PC: Search using motherboard model (onboard audio)  
+   - Specialized headset/speakers - Search using device model number  
+
+ **Advanced Check – BIOS Configuration**
+   - Recognized onboard audio may be disabled in BIOS  
+   - Verified onboard audio was enabled (if necessary)  
+
+## Findings
+- Issue was commonly caused by incorrect output device selection or outdated drivers.  
+- In cases where no device appeared in Device Manager, driver installation resolved detection issues.  
+- BIOS-level audio disablement is a less common but possible cause.
+
+## Resolution
+- Corrected audio output device selection.  
+- Updated or manually installed appropriate drivers.  
+- Verified hardware connections and device functionality.  
+
+## Outcome
+- Audio functionality restored.  
+- System output devices detected and functioning properly.  
+- User able to hear system and application audio normally.
