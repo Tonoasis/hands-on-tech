@@ -1,0 +1,63 @@
+Apps Not Opening
+
+              Issue 
+app /software clicks and nothing happens, or crashes immediately.
+May see an error message like “App failed to start” or “This app can’t open.”
+
+              Cause (Root cause or most likely cause)
+The app didn’t install properly or is corrupted.
+Windows needs updates to run the app.
+User profile or temporary files are causing conflicts.
+
+              First steps/checks
+Retart computer
+End the app if it’s running in rtask manager
+Check Windows Updates: Install any pending updates - Restart if require
+Check if the app is installed correctly:
+Settings: Apps - Apps & Features: Repair or Reinstall the app.
+Test the app on another user account (if possible) to see if it’s profile-related
+
+            Escalation:
+Review logs in detail
+Check Event Viewer (Application + System logs)
+Check crash logs and error codes for the app
+>Look for red Error icons
+> Match the time of the error to when the app failed to open
+—- Open the error
+	Double-click the error
+Error name
+Error code
+Description
+
+
+            Decide the fix
+	- Permission error: fix permissions / policy
+	- Missing file error: repair or reinstall app
+	- System error: run SFC / DISM
+
+2. Fix user profile issues
+	Check for corrupted user profiles
+	Repair or recreate the profile if needed
+	Restore user data after fixing the profile
+To identify a profile issue, the app tested under another user account. If it works, back up the user’s data, recreates the profile, restores the data, and confirms the application opens successfully
+
+Repair system files
+sfc /scannow
+Repairs corrupted Windows system files
+
+
+DISM /Online /Cleanup-Image /RestoreHealth
+repairs Windows system files that SFC can’t fix, which may allow apps that failed to open due to system corruption to work properly.
+
+
+
+Check domain / Active Directory issues
+- Verify the user’s account permissions
+- Check AD group membership
+- Confirm the account isn’t restricted or misconfigured
+
+Updates fix bugs in Windows or the app itself
+Ensures the app has the required system files and permissions:
+Install missing system patches
+ Apply vendor or Microsoft hotfixes 
+Ensure correct version and licensing
