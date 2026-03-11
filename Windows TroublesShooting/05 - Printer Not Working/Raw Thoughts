@@ -1,0 +1,110 @@
+Printer not working
+
+
+Initial Troubleshooting:
+
+          Issue
+Users are unable to print documents or print jobs that fail to complete.
+
+          Steps
+Verify the printer is powered on and properly connected.
+Confirm the correct printer is set as the default printer.
+Check the print queue for paused or stuck print jobs.
+Restart the application and attempt to print again.
+
+
+
+Devices and Printers window
+(Shows where printers, status, and default printers are managed.)
+
+
+System-Level Troubleshooting
+
+Steps:
+- Open Services (services.msc).
+Locate the Print Spooler service; it  handles interaction with the printer
+Restart the Print Spooler to clear stuck print jobs.
+
+
+
+[ Screenshot1]
+
+
+Open Device Manager and verify printer driver status.
+Inside Device Manager, my printer header appears under Print queues. This is because if no printer is connected, this section may appear empty, but it is the location to verify printer driver status
+
+
+
+
+[ Screenshot2]
+
+Shows previously connected printers and driver information. If a printer were connected, it would appear here with current driver and connection details.
+Update or reinstall the printer driver if necessary.
+
+
+
+[ Screenshot3]
+
+
+ Startup type. Automatic ensures the service starts with Windows so printing functions correctly.
+
+- Restarting Print Spooler restores communication between Windows and the printer because its clearing stalled print jobs. Reinstalling and or updating printer drivers 
+replaces corrupted files and resolves configuration issues that prevent printing.
+
+
+                                             Escalation
+
+issue
+The problem that couldn’t be resolved. I'm now  looking for root causes, system-level issues, or network/configuration problems that may require escalation to IT specialists.
+
+
+### Steps ###
+#1 Review Event Viewer logs for PrintService errors.
+Why:
+-Event Viewer records system events, errors, and warnings.
+- Print-related errors can show conflicts with drivers, potential  service failures, and or hardware communication issues.
+Search Event view or Windows + R, type eventvwr.msc
+Navigate to: Windows Logs - System or Applications:
+System log in Event Viewer. No printer connected, so no Print Spooler events appear, but this is where printing errors and service events would be logged.
+
+Find the errors an warnings that occurred when printing failed
+Note the Event ID and description  useful if escalating the issue
+
+[ Screenshot4]
+
+
+Reviewing my Event Viewer logs is a way to  identify driver errors, crashes of services and or other system events that prevented printing, providing the insight into the root cause.
+
+—----------------------------------------------------------------------------------------------------
+#2 Remove and re-add the printer in Devices and Printers.
+Why:
+A printers configurations could be a misconfiguration or corrupted settings prevent printing
+Re-adding the printer ensures Windows rebuilds the driver, configuration correctly
+Open Settings: Devices - Printers & scanners
+Select the printer - Remove device
+Click Add a printer or scanner - and then Reinstall
+
+
+Removing and Re-adding the printer refreshes configuration and driver settings, resolving corruption and or misconfigutations ports
+
+
+3. Verify network connectivity and printer IP address for network printers.
+
+Why:  
+- A network printer may not work if the computer cannot reach the printer   
+- Common issue may include: printer offline, firewall wrong IP,
+
+1. Open Command Prompt (cmd)  
+2. Ping [printer IP address]   
+3. If successful, network is okay; if timeout, check printer connection and IP
+
+*Verifying network connectivity ensures the computer can communicate with the printer.*
+
+—----------------------------------------------------------------------------------------------------------------
+
+4\. Restart the system to clear locked services or driver issues.
+
+- Sometimes services or drivers remain in a bad state after other fixes  
+-  A full reboot resets system services and network connections
+
+*Restarting the system can apply driver or configuration changes, ensuring printing functions properly.*
