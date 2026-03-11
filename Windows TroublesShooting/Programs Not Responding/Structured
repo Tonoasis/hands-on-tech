@@ -1,0 +1,42 @@
+                                                                                          # Programs “Not Responding”
+
+## Overview
+This lab documents troubleshooting steps for applications that become unresponsive in Windows. The goal is to identify the cause of the Not Responding state and restore normal program functionality.
+
+## Scenario / Issue #
+- Program displays “Not Responding” in the title bar.  
+- Task Manager shows the program is not processing user input.  
+- Multiple background processes may be associated with the application (e.g., Opera browser).  
+
+## Root Causes Considered #
+- Application stuck due to high CPU/memory usage.  
+- Multiple background processes preventing full shutdown.  
+- Corrupted program files.  
+- Extensions, add-ons, or cache causing conflicts.  
+- Windows system resources locked or insufficient.  
+
+## Troubleshooting Steps #
+1. Open Task Manager:locate the unresponsive program under the Processes tab.  
+2. Attempt to close the program using **End Task**.  
+3. If the program continues to hang, terminate all related background processes.  
+4. If still unresponsive, restart the system to free locked resources.  
+5. For browsers or multi-process apps:  
+   - Clear cache and temporary files  
+   - Disable unnecessary extensions  
+   - Ensure the application is updated to the latest version  
+6. If unresponsiveness persists, reinstall the program using a fresh download from the official website.  
+
+## Findings #
+- Unresponsive programs were often caused by locked system resources or multiple background processes.  
+- Clearing cache, disabling extensions, and updating the program resolved temporary issues.  
+- Corrupted program files required reinstallation for permanent resolution.  
+
+## Resolution #
+- Ended unresponsive tasks and related processes.  
+- Cleared cache and disabled unnecessary extensions for affected programs.  
+- Reinstalled corrupted applications when necessary.  
+
+## Outcome #
+- Programs respond normally after troubleshooting.  
+- Reduced instances of “Not Responding” behavior.  
+- System stability and user experience improved.
