@@ -1,0 +1,112 @@
+                                                                    Windows Update - Related Failures
+
+          ## Issue ##  #
+- Windows Update fails to download or install updates.
+- Error messages such as Update failed, Something went wrong, or specific error codes appear.
+- Updates become stuck at a percentage (example: 0%, 20%, 99%).
+- The system repeatedly asks to restart but updates never complete.
+
+      ## Cause ## (Root Cause / Most Likely Causes)
+- Insufficient disk space.
+- Corrupted Windows Update cache or components.
+- Network or DNS issues preventing update downloads.
+- Corrupted system files.
+- Windows Update services not running correctly.
+
+
+# Steps / Resolution #
+
+ 1. Restart the Computer
+- Restarting clears temporary update locks and pending operations.
+
+ 2. Check Internet Connectivity
+- Ensure the device has a stable internet connection.
+- Windows updates require reliable access to Microsoft update servers.
+
+3. Run Windows Update Troubleshooter
+Navigate to: Settings - Update & Security - Troubleshoot - Windows Update
+
+Select **Run the troubleshooter**.
+
+![Windows Update Troubleshooter](screenshots/screenshot1.png)
+
+---
+
+## 4. Restart Windows Update Services
+
+Press **Win + R** - type: services.msc
+
+
+Restart the following services:
+
+### Windows Update
+- Controls detection, download, and installation of Windows updates.
+
+### Background Intelligent Transfer Service (BITS)
+- Handles background downloading of update files.
+
+# Cryptographic Services
+- Verifies update file authenticity and integrity.
+
+![Restart Services](screenshots/screenshot2.png)
+
+# 5. Clear the Windows Update Cache
+1. Stop the **Windows Update service** in "services.msc".
+2. Navigate to: C:\Windows\SoftwareDistribution
+3. Delete all contents inside this folder.
+4. Restart the **Windows Update service**.
+
+![Clear Update Cache](screenshots/screenshot3.png)
+
+Clearing the Windows Update cache removes corrupted or incomplete temporary update files and forces Windows to download fresh update data.
+
+
+## 6. Run System File Repairs
+Open **Command Prompt as Administrator** and run:
+ sfc /scannow
+
+If issues persist, run: DISM /Online /Cleanup-Image /RestoreHealth
+ this command scans windows system files for courrption 
+
+
+## 7 Check disk space
+Note: Checking disk space is often one of the first things to verify before installing updates.
+
+
+# 8 Manually install updates
+If updates continue to fail, install them manually.
+
+How to manually install a Windows update
+Identify the failed update
+Open Settings: - Update & Security - Windows Update - View update history
+Note the KB number of the failed update (example: KB5006670)
+
+Go to Microsoft Update Catalog
+Open your browser:
+https://www.catalog.update.microsoft.com
+
+Search for the KB number
+Download the correct update
+Choose the version matching your system:
+
+Windows 10 / Windows 11
+32-bit (x86) or 64-bit (x64)
+Install the update manually: Double-click the downloaded .msu file
+This launches the Windows Update Standalone Installer
+
+Follow the prompts to install the update
+Restart the computer
+Some updates require a restart to fully apply.
+Verify installation
+
+Go to Settings - Update & Security - View update history
+Confirm the update shows as Successfully Installed
+
+Manually installing updates bypasses issues such as corrupted update cache, service failures, or network download problems.
+
+
+
+          ## Why It Happened ##
+Windows Update failures may  occur when update components become corrupted, requiring services stop running, or the system cannot properly download update files.
+Restarting services restores update functionality, clearing the update cache removes corrupted temporary files, and running SFC and DISM repairs essential Windows system components.
+Ensuring adequate disk space allows updates to install properly, while manually installing updates bypasses issues affecting the automatic update process.
