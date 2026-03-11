@@ -1,0 +1,88 @@
+  Issue:                                                                                      Corrupt User Profile Symptoms
+
+Note: This issue may overlap with “Apps Not Opening” because corrupted profiles can prevent applications from launching correctly.
+
+
+
+A corrupted user profile can cause multiple issues, including:
+- Applications failing to open
+- Start Menu or Taskbar not responding
+- Temporary profile logins
+- Missing desktop or user data
+
+Cause:
+User profile files or registry entries are damaged, preventing Windows from loading the profile correctly.
+
+Steps / Resolution:
+> troubleshooting for corrupted user profiles is covered under:
+Cannot Log In / Account Issues - for login and temporary profile fixes
+ Apps Not Opening - for application errors caused by profile corruption
+
+Actions include:
+- Logging in with another admin account
+- Backing up the affected profile from C:\Users
+- Creating a new profile and restoring user data
+- Checking the registry for .bak profile entries and correcting ProfileImagePath
+- Verifying permissions on the new profile folder
+
+
+# Corrupt User Profile Symptoms #
+
+## Issue ##
+User cannot log in properly or Windows loads a temporary profile.  
+Applications may fail to open, settings are missing, or desktop icons/files are gone.  
+Symptoms may include error messages like: 
+
+- User profile cannot be loaded  
+-  A Welcome: but ur using  a temporary profile
+
+# Cause #
+The user profile may be corrupted due to:  
+- Failed updates or system crashes 
+-  Improper shutdowns or disk errors  
+- Profile registry keys being damaged or misconfigured  
+
+# Steps / Resolution #
+- Sign out and restart Windows  
+- Try logging in with another user account to isolate the issue  
+- Check permissions: right click user folder -> Properties -> Security -> ensure user has full control  
+
+# 2 - if previous dosent work
+- Backup user data from C:\Users\[corrupted_profile]
+- Create a new user account  
+- Copy essential files (Documents, Desktop, Favorites) to the new profile  
+[Screenshot.png]
+
+
+## Escaltion #
+- Open Registry Editor -> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList 
+- Check for ".bak" entries or incorrect Profile Image Path  
+- Backup the registry before making changes  
+- Correct or remove ".bak" entries as needed  
+> For domain accounts: escalate to IT to check Active Directory, unlock accounts, or reset profile replication  
+
+
+[Screnshot2.png]
+Image Path:
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-21-2664737520-481353137-1098671830-1131378
+
+A .bak registry entry may appear if a user profile becomes corrupted. Windows may auto created it and then log the user into a temporary profile. No .bak entry is shown here
+because this account has not experienced profile corruption.
+
+
+
+
+Check permissions:
+
+[Screenshot3.png]
+Registry permissions for the should allow Administrators, and the user account Full Control. Incorrect permissions can stop Windows from loading the profile; resulting in a temporary profile login.
+
+
+
+
+## Why It Happened & Why the Fix Worked
+Windows creates a temporary profile when it cannot load the normal profile due to corruption. 
+- Backing up data and creating a new profile restores access to the user’s files.
+- Correcting registry entries and permissions ensures Windows can properly link the profile to the user account, preventing future errors.
+
+> **Note:** This issue can overlap with “Apps Not Opening” since corrupted profiles may prevent applications from launching correctly. **Note:**
