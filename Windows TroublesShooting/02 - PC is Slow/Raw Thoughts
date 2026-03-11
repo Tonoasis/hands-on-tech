@@ -1,0 +1,95 @@
+
+                                        PC Is Slow 
+                                  (Startup apps, disk, services)
+
+      Issue (What the user sees/experiences):
+
+System performance is noticeably slow
+Applications take a long time to open or respond
+High CPU, memory, or disk usage observed
+System may freeze or lag during normal use
+
+    Cause (Root cause or most likely cause):
+
+Too many startup programs running at boot
+High disk usage due to background processes
+Unnecessary or misconfigured Windows services
+Insufficient system resources (CPU/RAM usage)
+System updates or background tasks consuming resources
+
+
+    Steps / Resolution (Numbered steps, commands, settings):
+Check system resource usage
+Open Task Manager (Ctrl + Shift + Esc)
+Review CPU, Memory, and Disk usage
+Identify processes using excessive resources
+
+
+
+
+[ ++++++Screenshot1++++++]
+[ ++++++Screenshot2++++++]
+
+
+
+Disable unnecessary startup programs
+Task Manager - Startup tab
+Disable non-essential applications from starting automatically
+
+
+[ ++++++Screenshot3++++++]
+
+
+
+Check disk usage
+In Task Manager, sort by Disk usage
+Identify applications or background processes causing high disk activity
+
+
+Review and manage Windows services
+Press Windows + R: type services.msc
+Identify unnecessary services set to start automatically
+Set non-critical services to Manual if its fitting
+
+[ ++++++Screenshot4++++++]
+
+ 																																	
+
+
+Check system performance settings
+Search: advance system
+Press Windows + R: type sysdm.cpl
+System Properties - Advanced - Performance: Settings
+Adjust for best performance if needed
+
+[ ++++++Screenshot5++++++]
+
+
+This setting is purely about how Windows looks and feels, not your files or apps they control visual effect.
+Less visual processing - less RAM pressure
+Less RAM pressure - less disk swap usage
+Smoother overall performance
+Windows looks more basic / “flat”
+Frees up CPU + RAM
+Can help if your PC feels slow or disk usage spikes
+
+Nothing Breaks
+No files Deleted
+Apps work the same
+
+
+
+
+
+
+Restart the system
+Apply changes and reboot
+Monitor performance after startup
+
+
+
+Why It Happened & Why the Fix Worked:
+The system was slow due to excessive background processes, startup applications, and services consuming CPU, memory, and disk resources. Disabling unnecessary
+startup programs and services reduced the load on system resources, allowing the operating system to allocate resources more efficiently to active applications.
+Reviewing disk usage and system performance settings further optimized system performance, resulting in faster response times and improved overall system stability.
+
