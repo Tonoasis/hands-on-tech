@@ -1,0 +1,50 @@
+     No Sound in Windows – Raw Notes
+
+Check Volume and Mute Settings
+- Ensure Windows is not muted  
+- Increase system volume  
+- Verify speakers/headphones are not muted  
+
+Test Audio Output Device
+- Click speaker icon in taskbar  
+- Change audio output device  
+- Toggle through available devices until sound is heard  
+
+Test Speakers or Headphones
+- Try different headset or speakers  
+- Confirm external speakers are powered on  
+
+        Check Cable Connections
+- Ensure audio cables are securely connected  
+- On PC: plug into green audio jack  
+- Use front or rear port with headphone icon  
+
+      Audio Driver Issues
+Drivers allow Windows to communicate with hardware.  
+Missing, corrupted, or incorrect drivers can result in no sound.
+
+          Check Drivers
+- Open Device Manager  
+- Expand **Sound, video and game controllers**  
+- Right-click audio device: Properties  
+- Check device status for errors  
+- *(Reference: Screenshot1 )*  
+
+        Fix Driver Problems
+- Right-click device: Update driver  
+- If Windows cannot find a driver:
+  - Download manually from manufacturer  
+
+        Driver Sources
+- Laptop / Prebuilt PC - Search using PC model number  
+- Custom PC: Search using motherboard model (onboard audio)  
+- Specialized headset/speakers - Search using device model number  
+
+        No Audio Device Detected
+Possible causes:
+- Audio device not detected  
+- Faulty or missing driver  
+- Onboard audio disabled in BIOS  
+
+          BIOS Check (Advanced)
+- Verify onboard audio is enabled in BIOS settings
