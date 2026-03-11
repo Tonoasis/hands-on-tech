@@ -1,0 +1,6 @@
+LAB Overview
+
+Active Directory: + Windows Networking
+This lab demonstrates the setup and management of an Active Directory environment in a virtualized Windows network. It includes installing and configuring a Domain Controller with DHCP, DNS, and Organizational Units,
+creating users with PowerShell automation scripts, and joining a client VM to the domain. The lab also covers internal networking, NAT routing, and troubleshooting connectivity issues, showing practical problem solving 
+and system administration skills. Completing this lab reinforces my practical skills in managing Active Directory, configuring clients, and troubleshooting network connectivity
