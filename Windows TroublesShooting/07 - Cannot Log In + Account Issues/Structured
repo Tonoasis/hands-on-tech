@@ -1,0 +1,78 @@
+                                                                                           # # # # Cannot Log In / Account Issues # # # # 
+
+          ## Scenario / Issue
+Users are unable to log into their Windows account. Symptoms may include:  
+- Wrong password or username errors  
+- Caps Lock or Num Lock enabled  
+- Logging into a temporary profile  
+
+> Tip: If possible, log in with another user account to isolate the issue.
+
+---
+
+        ## Root Causes Considered
+- Corrupted user profile  
+- Account disabled or locked  
+- Network issues for domain accounts  
+- Temporary profile glitch  
+
+---
+
+        ## Steps / Resolution #
+1. Check User Accounts
+- Run: Windows + R: control userpasswords2 
+- Verify the account exists and is enabled (shows if disabled)  
+
+2. Reset Password (if needed)
+- **Local accounts:** Settings: Accounts - Sign-in options - Reset password  
+- **Microsoft accounts:** account.microsoft.com: Reset password  
+
+3. Check Domain / Network Issues (if applicable)
+- Ensure PC is connected to the network/domain  
+- Try logging in with another domain account to verify connectivity  
+
+4. Temporary Profile Fix
+- If logged into a temporary profile: sign out and restart  
+- Check C:\Users for the real profile folder  
+
+# Escalation #
+Potential causes:  
+- Corrupted registry for the user profile  
+- Domain / Active Directory misconfiguration  
+- Permissions issues  
+
+# Steps / Resolution  #
+1. **Repair Corrupted User Profile**
+   - Log in with another admin account  
+   - Back up the affected user profile  
+   - Create a new account and restore files  
+   - Check registry for profile issues  
+
+2. **Check Registry for Profile Issues**
+   - Open Registry Editor:  
+     "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"  
+   - Look for ".bak" entries or incorrect paths  
+   - ".bak" indicates Windows failed to load the original profile  
+   - Backup/export the ".bak" key before making changes  
+   - Correct "ProfileImagePath" to point to the proper folder  
+
+3. **Check Permissions**
+   - Right-click user folder - Properties - Security  
+   - Ensure the user has full control  
+
+4. **Domain Account Issues**
+   - Report to IT if a domain account cannot log in  
+   - Use Active Directory / Directory Manager to:  
+     - Check account status (disabled, expired, permissions)  
+     - Unlock account if locked due to failed logins  
+     - Force replication updates if needed  
+     - Reset password if forgotten  
+     - Review Event Viewer logs for authentication errors  
+
+---
+
+## Outcome
+- Users can log in normally  
+- Corrupted or temporary profiles resolved  
+- Permissions and account status verified  
+- Domain login issues escalated to IT as needed  
