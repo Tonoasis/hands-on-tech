@@ -1,0 +1,51 @@
+                                                                                      # Network Lab Overview #
+
+## Plan and Objectives
+Overview
+This lab demonstrates building a segmented network using VLANs, a managed switch, and a firewall to simulate enterprise IoT and user environments. 
+The goal is to configure multiple VLANs, enforce traffic isolation, manage inter-VLAN routing, and secure devices such as a laptop/VM and a PoE camera.
+
+
+## Progress So Far:
+The network setup has been planned and partially implemented in a logical sequence. The **firewall** configured first, establishing VLAN interfaces, IP subnets, and basic ACLs to act as the network core. Next, 
+**VLANs were created on the managed switch**, with trunk and access ports assigned to match the firewall configuration. **PoE was enabled for the camera**, and port aggregation was configured where needed to support multiple devices. Finally, 
+**Laptop and VM VLAN traffic was separated** using VLAN tagging on the shared NIC, ensuring logical isolation between devices while using a single physical port.
+
+## Hardware Used:
+Firewall: Netgear SRX5308
+Managed Switch: Netgear ProSafe M4100-D12G
+Camera: TRENDnet TV-IP321PI (PoE)
+PoE Injector: 802.3af standard
+Cabling: 6 × 3ft Cat6 Ethernet
+
+## Key Lab Concepts
+VLANs: Separate logical networks; devices in different VLANs cannot communicate unless routed via firewall.
+NIC Notes: Shared NIC between laptop and VM requires VLAN tagging; separate NIC would allow automatic logical separation.
+Firewall Role: Manages routing, VLAN gateways, and ACLs; internal network segmentation without exposing directly to the public internet.
+Double NAT Issue: Telus router overlaps with firewall LAN (both 192.168.1.x), causing 403 errors and subnet confusion. Planned resolution: console cable to reassign firewall LAN IP.
+
+## Issues Encountered
+Firewall Web GUI Access: HTTP 403 errors due to LAN subnet overlap and potential double NAT; power cycling and temporary IP changes did not resolve.
+{Double NAT Issue: Telus router overlaps with firewall LAN (both 192.168.1.x), causing 403 errors and subnet confusion. Planned resolution: console cable to reassign firewall LAN IP.
+Laptop ↔ Switch Connectivity: Laptop cannot detect switch port; cables and NIC confirmed functional. Likely causes: misconfigured or administratively locked switch port, or internal hardware issue.
+
+## Next Steps / Planned Actions
+Use console cable to access firewall and switch directly.
+Reconfigure firewall LAN IP to avoid subnet conflict with ISP router.
+Verify switch port settings, VLAN assignments, and reset if necessary.
+Once switch port is confirmed working, validate VLAN separation and inter-VLAN routing.
+
+
+## Network Topology Overview
+This diagram illustrates the network setup:
+## Diagram
+
+![Network Diagram](path_to_your_diagram_image.png)
+
+
+## Overall Plan
+Build a secure, segmented network environment mimicking enterprise setups to gain hands-on experience with VLANs, routing, and network device management.
+The lab aims to develop practical skills in identifying and resolving real world networking issues within multi-device virtual and physical infrastructures.
+
+
+*End of Lab Report*
