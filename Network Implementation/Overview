@@ -40,7 +40,7 @@ Once switch port is confirmed working, validate VLAN separation and inter-VLAN r
 This diagram illustrates the network setup:
 ## Diagram
 
-![Network Diagram](path_to_your_diagram_image.png)
+![Network Diagram](diagram_image.png)
 
 
 ## Overall Plan
